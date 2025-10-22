@@ -17,3 +17,5 @@ for sub in subdoms:
     
     else:
         print("Valid domain: ",sub_domains)  # Otherwise it will print "valid domain"
+
+
