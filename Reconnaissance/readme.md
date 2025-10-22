@@ -8,7 +8,7 @@ A simple Python script to enumerate potential subdomains of a target domain usin
 
 ## Files in this folder
 
-- `myscript.py` — the main enumeration script
+- `Pythonscript_subdomain_search.py` — the main enumeration script
 - `subdomains.txt` — example wordlist (one subdomain per line)
 - `README.md` — this documentation
 
@@ -29,4 +29,12 @@ pip install requests
 
 python3 myscript.py example.com
 
+How it works
 
+Reads a wordlist of potential subdomains (from subdomains.txt by default).
+
+Constructs URLs like http://{subdomain}.{domain}.
+
+Sends HTTP GET requests with a short timeout.
+
+Prints valid domains with HTTP status codes.
