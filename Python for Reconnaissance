@@ -1,1 +1,18 @@
-Python 
+# This python script is designed to enumerate target sub-domains  
+import requests # Import requests library which allows script to make HTTP GET requests
+import sys # imports sys module giving access to system specific parameters
+
+sub_list = open("subdomains.txt").read() # creates an object "sub-list" which provides a word list for the script to search for
+subdoms = sub_list.splitlines() # creates an object "subdoms" with separate scripts for each possible subdomain
+
+for sub in subdoms:
+    sub_domains = f"http://{sub}.{sys.argv[1]}" # Starts a loop from first subdomain in subdoms list with main domain name provided as CL argument
+
+    try:
+        requests.get(sub_domains) # Tries to send a GET requet to the target 
+    
+    except requests.ConnectionError: # If GET request fails it will raise a ConnectionError
+        pass
+    
+    else:
+        print("Valid domain: ",sub_domains)  # Otherwise it will print "valid domain"
