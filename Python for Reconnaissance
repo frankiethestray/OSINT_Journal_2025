@@ -1,3 +1,4 @@
+Python
 # This python script is designed to enumerate target sub-domains  
 import requests # Import requests library which allows script to make HTTP GET requests
 import sys # imports sys module giving access to system specific parameters
