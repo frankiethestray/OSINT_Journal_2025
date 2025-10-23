@@ -13,16 +13,30 @@ PARSING | EXTRACTING | BY TAG
 From bs4 import BeautifulSoup
 import requests
 
-url = 'https://ca.indeed.com/jobs?q=OSINT&l=Canada&from=searchOnHP&vjk=ef203914e62e1848'
+url = 'https://www.indeed.com/'
 response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html.parser')
 
 # By Tag
-for item in soup.find_all('h1'):
+for item in soup.find_all('a'):
     print(item.text)
 
-RESULT
-"REQUEST IS BLOCKED"
+RESULTS
+
+ind jobs
+Company Reviews
+Find salaries
+Sign in
+Upload your resume
+Sign in
+Employers / Post Job
+Find jobs
+Company Reviews
+Find salaries
+Return home   →
+Troubleshooting Cloudflare Errors
+Contact us
+
 
 # By Class or ID
 for element in soup.find_all(class_='gnav'):
