@@ -1,96 +1,50 @@
+GENERAL OBJECTIVE
 This project will set up a data pipeline to collect data from a chosen source.
-It is important that that data source we select allows data collection.  
+
+PARAMETERS
+It is important that the data source allows data collection.  
+No AI support is to be used
 
 CHOOSING A DATA SOURCE
-Google Search and robots.txt :-
-Using the Google search engine to querry websites that allowed webscraping resulted in a webpage titled "The 10 most scraped websites in 2025" (Octoparse)
-These websites presented a strong liklihood of my web scraper working.  I decided to go with Indeed's Canadian domain (https://www.indeed.ca)
-To make sure, I checked the robots.txt searching the URL https://www.indeed.ca/robots.txt.
-The list of allowed files or sub-directories are printed below.  This provided a legal 'taget' for the scraper to 'peruse'.
+Google's News site (https://www.news.google.com)  was selected as a beginner friendly news site to be used for scraping.
 
-
-PARSING | EXTRACTING | BY TAG
-From bs4 import BeautifulSoup
-import requests
-
-url = 'https://www.indeed.com/'
-response = requests.get(url)
-soup = BeautifulSoup(response.content, 'html.parser')
-
-# By Tag
-for item in soup.find_all('a'):
-    print(item.text)
-
-RESULTS
-
-ind jobs
-Company Reviews
-Find salaries
-Sign in
-Upload your resume
-Sign in
-Employers / Post Job
-Find jobs
-Company Reviews
-Find salaries
-Return home   →
-Troubleshooting Cloudflare Errors
-Contact us
-
-
-# By Class or ID
-for element in soup.find_all(class_='gnav'):
-   print(element.text)
-for element in soup.find_all(id='id_name'):
-   print(element.text)
-
-RESULT
-Find jobs   Company Reviews   Find salaries    Sign in       Upload your resume   Sign in   Employers / Post Job   Find jobs   Company Reviews   Find salaries
-
-
-
-Robots.txt of https://www.indeed.ca
+LEGAL COSTRAINTS
+The robots.txt page for the site was reviewed (https://www.news.google.com/robots.txt).  The sub-directory (https://www.news.google.com/home/) was selected to be scraped as it was allowed by the site.
 
 User-agent: *
-Allow: /
-Allow: /hire/*?*isid=
-Allow: /personeel/*?*isid=
-Allow: /reclutamiento/*?*isid=
-Allow: /recruiting/*?*isid=
-Allow: /recrutement/*?*isid=
+Disallow: /
+Allow: /$
+Allow: /?
+Allow: /home$
+Allow: /home?
+Allow: /home/
+Allow: /nwshp$
+Allow: /topics/
+Allow: /publications/
+Allow: /stories/
+Allow: /swg/
+Allow: /about$
+Allow: /about?
+Allow: /about/
 User-agent: Googlebot
-User-agent: OAI-SearchBot
-User-agent: ChatGPT-User
-User-agent: Bingbot
-User-agent: Slurp
-User-agent: DuckDuckBot
-User-agent: YahooJP
-Allow: /
-Allow: /hire/*?*isid=
-Allow: /m/viewjob?
-Allow: /personeel/*?*isid=
-Allow: /reclutamiento/*?*isid=
-Allow: /recruiting/*?*isid=
-Allow: /recrutement/*?*isid=
-Allow: /viewjob?
-Allow: /
-User-agent: GPTBot
-User-agent: Google-Extended
+Disallow: /
+Allow: /$
+Allow: /?
+Allow: /home$
+Allow: /home?
+Allow: /home/
 User-agent: CCBot
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
 User-agent: anthropic-ai
-User-agent: FacebookBot
-User-agent: AmazonBot
-User-agent: Applebot-Extended
-User-agent: Bytespider
-User-agent: Baiduspider
-User-agent: cohere-training-data-crawler
+User-agent: ClaudeBot
+User-agent: Claude-Web
+Disallow: /
 
 
 
-REFERENCES
-https://www.octoparse.com/blog/top-10-most-scraped-websites
-https://www.indeed.ca
-https://www.indeed.ca/robots.txt
+
 
 
 User-agent: FriendlyCrawler
